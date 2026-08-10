@@ -13,12 +13,15 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
     console.log("A user connected");
-    console.log("Socket ID:", socket.id);
+    // console.log("Socket ID:", socket.id);
     
     // Listens for the client's "hello" event
-    socket.on("hello", (name) => {
-        console.log(`Hello event received from client ${name}!`);
-    });
+    // socket.on("hello", (name) => {
+    //     console.log(`Hello event received from client ${name}!`);
+    // });
+
+    socket.emit("welcome", "Welcome to the server!");
+
 });
 
 server.listen(3000, () => {
