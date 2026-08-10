@@ -3,18 +3,22 @@
 <head>
     <title>Socket.IO Learning</title>
 </head>
-
 <body>
-
     <h1>Socket.IO</h1>
-
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-
+    
+    <!-- Load Socket.IO from an official, reliable CDN -->
+    <script src="https://cdn.socket.io/4.8.3/socket.io.min.js"></script>
     <script>
+        // Connect to your local backend server
+        const socket = io("http://127.0.0.1:3000");
 
-        const socket = io("http://localhost:3000");
-
+        // Verify connection before sending data
+        socket.on("connect", () => {
+            console.log("Connected to server with ID:", socket.id);
+            
+            // Send event to the server
+            socket.emit("hello", "Hello, Server!");
+        });
     </script>
-
 </body>
 </html>
